@@ -1,5 +1,5 @@
 import React from "react";
 
 export default function Chat() {
-  return <div className="basis-1/2">Chat</div>;
+  return <div class="flex-[2] border-l border-r border-l-[#dddddd35] border-r-[#dddddd35]"></div>;
 }
