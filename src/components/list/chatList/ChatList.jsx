@@ -4,7 +4,7 @@ export default function Chatlist() {
   const [addMode, setAddMode] = useState(false);
 
   return (
-    <div className="flex-[1] overflow-scroll">
+    <div className="flex-[1] overflow-auto">
       <div className="flex items-center gap-3 p-3">
         <div className="flex flex-[1]  bg-[rgba(17,25,40,0.5)] gap-3 items-center rounded-[10px] p-2">
           <img
@@ -25,6 +25,72 @@ export default function Chatlist() {
             alt=""
             onClick={() => setAddMode((prev) => !prev)}
           />
+        </div>
+      </div>
+      <div className="flex item center gap-3 p-3 cursor-pointe border-b border-b-[#dddddd35]">
+        <img
+          className="w-[50px] h-[50px] rounded-full object-cover"
+          src="./avatar.png "
+          alt=""
+        />
+        <div className="flex flex-col gap-1">
+          <span className="font-medium ">caner</span>
+          <p className="text-[14px] font-light">Hello</p>
+        </div>
+      </div>
+      <div className="flex item center gap-3 p-3 cursor-pointe border-b border-b-[#dddddd35]">
+        <img
+          className="w-[50px] h-[50px] rounded-full object-cover"
+          src="./avatar.png "
+          alt=""
+        />
+        <div className="flex flex-col gap-1">
+          <span className="font-medium ">caner</span>
+          <p className="text-[14px] font-light">Hello</p>
+        </div>
+      </div>
+      <div className="flex item center gap-3 p-3 cursor-pointe border-b border-b-[#dddddd35]">
+        <img
+          className="w-[50px] h-[50px] rounded-full object-cover"
+          src="./avatar.png "
+          alt=""
+        />
+        <div className="flex flex-col gap-1">
+          <span className="font-medium ">caner</span>
+          <p className="text-[14px] font-light">Hello</p>
+        </div>
+      </div>
+      <div className="flex item center gap-3 p-3 cursor-pointe border-b border-b-[#dddddd35]">
+        <img
+          className="w-[50px] h-[50px] rounded-full object-cover"
+          src="./avatar.png "
+          alt=""
+        />
+        <div className="flex flex-col gap-1">
+          <span className="font-medium ">caner</span>
+          <p className="text-[14px] font-light">Hello</p>
+        </div>
+      </div>
+      <div className="flex item center gap-3 p-3 cursor-pointe border-b border-b-[#dddddd35]">
+        <img
+          className="w-[50px] h-[50px] rounded-full object-cover"
+          src="./avatar.png "
+          alt=""
+        />
+        <div className="flex flex-col gap-1">
+          <span className="font-medium ">caner</span>
+          <p className="text-[14px] font-light">Hello</p>
+        </div>
+      </div>
+      <div className="flex item center gap-3 p-3 cursor-pointe border-b border-b-[#dddddd35]">
+        <img
+          className="w-[50px] h-[50px] rounded-full object-cover"
+          src="./avatar.png "
+          alt=""
+        />
+        <div className="flex flex-col gap-1">
+          <span className="font-medium ">caner</span>
+          <p className="text-[14px] font-light">Hello</p>
         </div>
       </div>
       <div className="flex item center gap-3 p-3 cursor-pointe border-b border-b-[#dddddd35]">
