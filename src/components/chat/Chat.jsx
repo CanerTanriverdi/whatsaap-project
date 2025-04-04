@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Picker from "@emoji-mart/react";
 import data from "@emoji-mart/data";
 
@@ -6,6 +6,11 @@ export default function Chat() {
   const [open, setOpen] = useState(false);
   const [text, setText] = useState("");
   const inputRef = useRef();
+  const endRef = useRef(null);
+
+  useEffect(() => {
+    endRef.current?.scrollIntoView({ behavior: "smooth" });
+  });
 
   const handleEmoji = (emoji) => {
     setText((prev) => prev + emoji.native);
@@ -29,17 +34,17 @@ export default function Chat() {
         </div>
         <div className="icons flex gap-4">
           <img
-            className="w-4 h-4 sm:w-5 sm:h-5"
+            className="w-4 h-4 sm:w-5 sm:h-5 cursor-pointer"
             src="./phone.png"
             alt="Phone"
           />
           <img
-            className="w-4 h-4 sm:w-5 sm:h-5"
+            className="w-4 h-4 sm:w-5 sm:h-5 cursor-pointer"
             src="./video.png"
             alt="Video"
           />
           <img
-            className="w-4 h-4 sm:w-5 sm:h-5"
+            className="w-4 h-4 sm:w-5 sm:h-5 cursor-pointer"
             src="./info.png"
             alt="Info"
           />
@@ -49,26 +54,107 @@ export default function Chat() {
       <div className="center flex flex-col p-5 gap-5 flex-1 overflow-auto">
         <div className="message OWN flex max-w-[80%] self-end">
           <div className="texts flex flex-1 flex-col gap-1">
+            <p className="bg-[#5183fe] rounded-lg text-sm p-2">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Animi corporis cumque deleniti quaerat obcaecati
+              quasi assumenda a similique accusantium dolorem doloremque, qui totam eveniet quisquam reprehenderit ad
+              earum eaque libero!
+            </p>
+            <span className="text-xs">1 min ago</span>
+          </div>
+        </div>
+
+        <div className="message YOU flex gap-2 max-w-[80%]">
+          <img
+            className="w-6 h-6 sm:w-[30px] sm:h-[30px] rounded-full object-cover"
+            src="./avatar.png"
+            alt="User"
+          />
+          <div className="texts flex flex-1 flex-col gap-1">
+            <p className="text-sm p-2 rounded-lg bg-[rgba(17,25,40,0.3)]">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Animi corporis cumque deleniti quaerat obcaecati
+              quasi assumenda a similique accusantium dolorem doloremque, qui totam eveniet quisquam reprehenderit ad
+              earum eaque libero!
+            </p>
+            <span className="text-xs">1 min ago</span>
+          </div>
+        </div>
+
+        <div className="message OWN flex max-w-[80%] self-end">
+          <div className="texts flex flex-1 flex-col gap-1">
+            <p className="bg-[#5183fe] rounded-lg text-sm p-2">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Animi corporis cumque deleniti quaerat obcaecati
+              quasi assumenda a similique accusantium dolorem doloremque, qui totam eveniet quisquam reprehenderit ad
+              earum eaque libero!
+            </p>
+            <span className="text-xs">1 min ago</span>
+          </div>
+        </div>
+
+        <div className="message YOU flex gap-2 max-w-[80%]">
+          <img
+            className="w-6 h-6 sm:w-[30px] sm:h-[30px] rounded-full object-cover"
+            src="./avatar.png"
+            alt="User"
+          />
+          <div className="texts flex flex-1 flex-col gap-1">
+            <p className="text-sm p-2 rounded-lg bg-[rgba(17,25,40,0.3)]">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Animi corporis cumque deleniti quaerat obcaecati
+              quasi assumenda a similique accusantium dolorem doloremque, qui totam eveniet quisquam reprehenderit ad
+              earum eaque libero!
+            </p>
+            <span className="text-xs">1 min ago</span>
+          </div>
+        </div>
+
+        <div className="message OWN flex max-w-[80%] self-end">
+          <div className="texts flex flex-1 flex-col gap-1">
+            <p className="bg-[#5183fe] rounded-lg text-sm p-2">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Animi corporis cumque deleniti quaerat obcaecati
+              quasi assumenda a similique accusantium dolorem doloremque, qui totam eveniet quisquam reprehenderit ad
+              earum eaque libero!
+            </p>
+            <span className="text-xs">1 min ago</span>
+          </div>
+        </div>
+
+        <div className="message YOU flex gap-2 max-w-[80%]">
+          <img
+            className="w-6 h-6 sm:w-[30px] sm:h-[30px] rounded-full object-cover"
+            src="./avatar.png"
+            alt="User"
+          />
+          <div className="texts flex flex-1 flex-col gap-1">
+            <p className="text-sm p-2 rounded-lg bg-[rgba(17,25,40,0.3)]">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Animi corporis cumque deleniti quaerat obcaecati
+              quasi assumenda a similique accusantium dolorem doloremque, qui totam eveniet quisquam reprehenderit ad
+              earum eaque libero!
+            </p>
+            <span className="text-xs">1 min ago</span>
+          </div>
+        </div>
+
+        <div className="message OWN flex max-w-[80%] self-end">
+          <div className="texts flex flex-1 flex-col gap-1">
+            <p className="bg-[#5183fe] rounded-lg text-sm p-2">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Animi corporis cumque deleniti quaerat obcaecati
+              quasi assumenda a similique accusantium dolorem doloremque, qui totam eveniet quisquam reprehenderit ad
+              earum eaque libero!
+            </p>
+            <span className="text-xs">1 min ago</span>
+          </div>
+        </div>
+
+        <div className="message YOU flex gap-2 max-w-[80%]">
+          <img
+            className="w-6 h-6 sm:w-[30px] sm:h-[30px] rounded-full object-cover"
+            src="./avatar.png"
+            alt="User"
+          />
+          <div className="texts flex flex-1 flex-col gap-1">
             <img
               src="https://images.pexels.com/photos/23369004/pexels-photo-23369004/free-photo-of-heron-flying-above-a-cherry-blossom.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
               alt="Shared media"
             />
-            <p className="bg-[#5183fe] rounded-lg text-sm p-2">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Animi corporis cumque deleniti quaerat obcaecati
-              quasi assumenda a similique accusantium dolorem doloremque, qui totam eveniet quisquam reprehenderit ad
-              earum eaque libero!
-            </p>
-            <span className="text-xs">1 min ago</span>
-          </div>
-        </div>
-
-        <div className="message YOU flex gap-2 max-w-[80%]">
-          <img
-            className="w-6 h-6 sm:w-[30px] sm:h-[30px] rounded-full object-cover"
-            src="./avatar.png"
-            alt="User"
-          />
-          <div className="texts flex flex-1 flex-col gap-1">
             <p className="text-sm p-2 rounded-lg bg-[rgba(17,25,40,0.3)]">
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Animi corporis cumque deleniti quaerat obcaecati
               quasi assumenda a similique accusantium dolorem doloremque, qui totam eveniet quisquam reprehenderit ad
@@ -77,89 +163,8 @@ export default function Chat() {
             <span className="text-xs">1 min ago</span>
           </div>
         </div>
-
-        <div className="message OWN flex max-w-[80%] self-end">
-          <div className="texts flex flex-1 flex-col gap-1">
-            <p className="bg-[#5183fe] rounded-lg text-sm p-2">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Animi corporis cumque deleniti quaerat obcaecati
-              quasi assumenda a similique accusantium dolorem doloremque, qui totam eveniet quisquam reprehenderit ad
-              earum eaque libero!
-            </p>
-            <span className="text-xs">1 min ago</span>
-          </div>
-        </div>
-
-        <div className="message YOU flex gap-2 max-w-[80%]">
-          <img
-            className="w-6 h-6 sm:w-[30px] sm:h-[30px] rounded-full object-cover"
-            src="./avatar.png"
-            alt="User"
-          />
-          <div className="texts flex flex-1 flex-col gap-1">
-            <p className="text-sm p-2 rounded-lg bg-[rgba(17,25,40,0.3)]">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Animi corporis cumque deleniti quaerat obcaecati
-              quasi assumenda a similique accusantium dolorem doloremque, qui totam eveniet quisquam reprehenderit ad
-              earum eaque libero!
-            </p>
-            <span className="text-xs">1 min ago</span>
-          </div>
-        </div>
-
-        <div className="message OWN flex max-w-[80%] self-end">
-          <div className="texts flex flex-1 flex-col gap-1">
-            <p className="bg-[#5183fe] rounded-lg text-sm p-2">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Animi corporis cumque deleniti quaerat obcaecati
-              quasi assumenda a similique accusantium dolorem doloremque, qui totam eveniet quisquam reprehenderit ad
-              earum eaque libero!
-            </p>
-            <span className="text-xs">1 min ago</span>
-          </div>
-        </div>
-
-        <div className="message YOU flex gap-2 max-w-[80%]">
-          <img
-            className="w-6 h-6 sm:w-[30px] sm:h-[30px] rounded-full object-cover"
-            src="./avatar.png"
-            alt="User"
-          />
-          <div className="texts flex flex-1 flex-col gap-1">
-            <p className="text-sm p-2 rounded-lg bg-[rgba(17,25,40,0.3)]">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Animi corporis cumque deleniti quaerat obcaecati
-              quasi assumenda a similique accusantium dolorem doloremque, qui totam eveniet quisquam reprehenderit ad
-              earum eaque libero!
-            </p>
-            <span className="text-xs">1 min ago</span>
-          </div>
-        </div>
-
-        <div className="message OWN flex max-w-[80%] self-end">
-          <div className="texts flex flex-1 flex-col gap-1">
-            <p className="bg-[#5183fe] rounded-lg text-sm p-2">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Animi corporis cumque deleniti quaerat obcaecati
-              quasi assumenda a similique accusantium dolorem doloremque, qui totam eveniet quisquam reprehenderit ad
-              earum eaque libero!
-            </p>
-            <span className="text-xs">1 min ago</span>
-          </div>
-        </div>
-
-        <div className="message YOU flex gap-2 max-w-[80%]">
-          <img
-            className="w-6 h-6 sm:w-[30px] sm:h-[30px] rounded-full object-cover"
-            src="./avatar.png"
-            alt="User"
-          />
-          <div className="texts flex flex-1 flex-col gap-1">
-            <p className="text-sm p-2 rounded-lg bg-[rgba(17,25,40,0.3)]">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Animi corporis cumque deleniti quaerat obcaecati
-              quasi assumenda a similique accusantium dolorem doloremque, qui totam eveniet quisquam reprehenderit ad
-              earum eaque libero!
-            </p>
-            <span className="text-xs">1 min ago</span>
-          </div>
-        </div>
+        <div ref={endRef}></div>
       </div>
-
       <div className="bottom flex p-5 items-center justify-between border-t border-t-[#dddddd35] gap-3 mt-auto">
         <div className="icons flex gap-5">
           <img
