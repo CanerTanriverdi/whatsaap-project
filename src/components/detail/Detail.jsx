@@ -125,10 +125,10 @@ export default function Detail() {
             />
           </div>
         </div>
-        <button className="px-2 py-4 bg-[rgba(230,74,105,0.553)] text-white border-none rounded-md cursor-pointer hover:bg-[rgba(220,20,60,0.796)]">
+        <button className="px-2 py-2 bg-[rgba(230,74,105,0.35)] text-white border-none rounded-md cursor-pointer hover:bg-[rgba(220,20,60,0.796)]">
           Block User
         </button>
-        <button className="px-2 py-4 bg-[rgba(26,115,232,0.55)] text-white border-none rounded-md cursor-pointer hover:bg-[rgba(26,115,232,0.85)]">
+        <button className="px-2 py-2 bg-[rgba(26,115,232,0.35)] text-white border-none rounded-md cursor-pointer hover:bg-[rgba(26,115,232,0.85)]">
           Logout
         </button>
       </div>

@@ -40,7 +40,7 @@ export default function Login() {
             placeholder="password"
             name="password"
           />
-          <button className="w-full p-4 border-none bg-[#1f8ef1] text-white rounded-md cursor-pointer font-normal">
+          <button className="w-full px-4 py-2 border-none bg-[#1f8ef1] text-white rounded-md cursor-pointer font-normal">
             Sign In
           </button>
         </form>
@@ -85,7 +85,7 @@ export default function Login() {
             placeholder="password"
             name="password"
           />
-          <button className="w-full p-4 border-none bg-[#1f8ef1] text-white rounded-md cursor-pointer font-normal">
+          <button className="w-full px-4 py-2  border-none bg-[#1f8ef1] text-white rounded-md cursor-pointer font-normal">
             Sign Up
           </button>
         </form>
