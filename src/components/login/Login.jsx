@@ -1,11 +1,17 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
+import { auth, db } from "../../lib/firebase";
+import { doc, setDoc } from "firebase/firestore";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import upload from "../../lib/upload";
 
 export default function Login() {
   const [avatar, setAvatar] = useState({
     file: null,
     url: "",
   });
+
+  const [loading, setLoading] = useState(false);
 
   const handleAvatar = (e) => {
     if (e.target.files[0]) {
@@ -16,13 +22,59 @@ export default function Login() {
     }
   };
 
-  const handleLogin = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    const formData = new FormData(e.target);
+
+    const { username, email, password } = Object.fromEntries(formData);
+
+    try {
+      const res = await createUserWithEmailAndPassword(auth, email, password);
+
+      const imgUrl = await upload(avatar.file);
+
+      await setDoc(doc(db, "users", res.user.uid), {
+        username,
+        email,
+        avatar: imgUrl,
+        id: res.user.uid,
+        blocked: [],
+      });
+
+      await setDoc(doc(db, "userchats", res.user.uid), {
+        chats: [],
+      });
+
+      toast.success("Account created! You can login now!");
+    } catch (err) {
+      console.log(err);
+      toast.error(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    const formData = new FormData(e.target);
+    const { email, password } = Object.fromEntries(formData);
+
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+    } catch (err) {
+      console.log(err);
+      toast.error(err.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    <div className="login w-full h-full flex items-center gap-32">
-      <div className="item flex flex-1 flex-col items-center gap-5">
+    <div className="flex items-center w-full h-full gap-32 login">
+      <div className="flex flex-col items-center flex-1 gap-5 item">
         <h2>Welcome back</h2>
         <form
           className="flex flex-col items-center justify-center gap-4"
@@ -36,25 +88,32 @@ export default function Login() {
           />
           <input
             className="p-3 border-none outline-none bg-[rgba(17,25,40,0.6)] text-white rounded-md"
-            type="text"
+            type="password"
             placeholder="password"
             name="password"
           />
-          <button className="w-full px-4 py-2 border-none bg-[#1f8ef1] text-white rounded-md cursor-pointer font-normal">
-            Sign In
+          <button
+            disabled={loading}
+            className="w-full px-4 py-2 border-none bg-[#1f8ef1] text-white rounded-md cursor-pointer font-normal
+            disabled:cursor-not-allowed disabled:bg-[#1f8ff19c]"
+          >
+            {loading ? "Loading" : "Sign In"}
           </button>
         </form>
       </div>
       <div className="separator h-5/6 w-[2px] bg-[#dddddd35]"></div>
-      <div className="item flex flex-1 flex-col items-center gap-3">
+      <div className="flex flex-col items-center flex-1 gap-3 item">
         <h2>Create an Account</h2>
-        <form className="flex flex-col items-center justify-center gap-3">
+        <form
+          onSubmit={handleRegister}
+          className="flex flex-col items-center justify-center gap-3"
+        >
           <label
-            className="w-full flex items-center justify-between cursor-pointer underline"
+            className="flex items-center justify-between w-full underline cursor-pointer"
             htmlFor="file"
           >
             <img
-              className="w-12 h-12 rounded-lg object-cover opacity-60"
+              className="object-cover w-12 h-12 rounded-lg opacity-60"
               src={avatar.url || "./avatar.png"}
               alt=""
             />
@@ -81,12 +140,16 @@ export default function Login() {
           />
           <input
             className="p-3 border-none outline-none bg-[rgba(17,25,40,0.6)] text-white rounded-md"
-            type="text"
+            type="password"
             placeholder="password"
             name="password"
           />
-          <button className="w-full px-4 py-2  border-none bg-[#1f8ef1] text-white rounded-md cursor-pointer font-normal">
-            Sign Up
+          <button
+            disabled={loading}
+            className="w-full px-4 py-2  border-none bg-[#1f8ef1] text-white rounded-md cursor-pointer font-normal
+            disabled:cursor-not-allowed disabled:bg-[#1f8ff19c]"
+          >
+            {loading ? "Loading" : "Sign Up"}
           </button>
         </form>
       </div>
