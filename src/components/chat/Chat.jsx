@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import Picker from "@emoji-mart/react";
-import data from "@emoji-mart/data";
+import EmojiPicker from "emoji-picker-react";
 
 export default function Chat() {
   const [open, setOpen] = useState(false);
@@ -12,8 +11,8 @@ export default function Chat() {
     endRef.current?.scrollIntoView({ behavior: "smooth" });
   });
 
-  const handleEmoji = (emoji) => {
-    setText((prev) => prev + emoji.native);
+  const handleEmoji = (emojiData) => {
+    setText((prev) => prev + emojiData.emoji);
     setOpen(false);
     inputRef.current?.focus();
   };
@@ -165,6 +164,7 @@ export default function Chat() {
         </div>
         <div ref={endRef}></div>
       </div>
+
       <div className="bottom flex p-5 items-center justify-between border-t border-t-[#dddddd35] gap-3 mt-auto">
         <div className="icons flex gap-5">
           <img
@@ -183,6 +183,7 @@ export default function Chat() {
             alt="Mic"
           />
         </div>
+
         <input
           ref={inputRef}
           className="flex-1 bg-[rgba(17,25,40,0.5)] border-none outline-none text-white text-sm p-2 sm:p-[10px] rounded-[10px]"
@@ -191,6 +192,7 @@ export default function Chat() {
           value={text}
           onChange={(e) => setText(e.target.value)}
         />
+
         <div className="emoji relative">
           <img
             className="w-5 h-5 cursor-pointer"
@@ -200,16 +202,15 @@ export default function Chat() {
           />
           {open && (
             <div className="picker absolute bottom-[60px] right-0 z-50">
-              <Picker
-                data={data}
-                onEmojiSelect={handleEmoji}
+              <EmojiPicker
+                onEmojiClick={handleEmoji}
                 theme="dark"
-                previewPosition="none"
-                maxFrequentRows={0}
+                height={350}
               />
             </div>
           )}
         </div>
+
         <button className="bg-[#5183fe] text-white text-sm px-2 py-1 sm:px-3 sm:py-1 rounded-[5px] cursor-pointer border-none">
           Send
         </button>
