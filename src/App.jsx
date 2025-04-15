@@ -8,9 +8,11 @@ import Chat from "./components/chat/Chat";
 import Login from "./components/login/Login";
 import Detail from "./components/detail/Detail";
 import Notification from "./components/notification/Notification";
+import { useChatStore } from "./lib/chatStore";
 
 const App = () => {
   const { currentUser, isLoading, fetchUserInfo } = useUserStore();
+  const { chatId } = useChatStore();
 
   useEffect(() => {
     const unSub = onAuthStateChanged(auth, (user) => {
@@ -39,8 +41,8 @@ const App = () => {
         {currentUser ? (
           <>
             <List />
-            <Chat />
-            <Detail />
+            {chatId && <Chat />}
+            {chatId && <Detail />}
           </>
         ) : (
           <Login />
